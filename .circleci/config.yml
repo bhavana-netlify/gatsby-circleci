@@ -1,4 +1,4 @@
-netlexecutors:
+executors:
   node:
     parameters:
       image:
@@ -7,7 +7,7 @@ netlexecutors:
     docker:
     - image: circleci/node:<< parameters.image >>
     
- aliases:
+aliases:
   restore_cache: &restore_cache
     restore_cache:
       name: Restore Npm Package Cache
@@ -25,6 +25,7 @@ netlexecutors:
       key: v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}-{{ checksum ".circleci/config.yml" }}
       paths:
       - ./node_modules/
+      
 version: 2.1
 
 
