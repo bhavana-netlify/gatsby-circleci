@@ -63,3 +63,17 @@ jobs:
     - run: 
         name: deploy site to netlify
         command: netlify deploy --dir=/home/circleci/project/public -p
+
+
+        workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - install_dependencies
+      - build:
+          requires:
+            - install_dependencies
+      - deploy:
+          context: GatsbyNetlify
+          requires:
+            - build
