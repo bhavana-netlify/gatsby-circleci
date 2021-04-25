@@ -26,3 +26,40 @@ netlexecutors:
       paths:
       - ./node_modules/
 version: 2.1
+
+
+jobs:
+  install_dependencies:
+    executor: node
+    steps:
+    - checkout
+    - <<: *restore_cache
+    - <<: *install_node_modules
+    - <<: *save_cache
+  build:
+    executor: node
+    steps:
+    - checkout
+    - <<: *restore_cache
+    - <<: *install_node_modules
+    - run:
+        name: Build Public
+        command: npm run build
+    - persist_to_workspace:
+        root: /home/circleci/project
+        paths:
+          - public
+  deploy:
+    executor: node
+    steps:
+    - checkout
+    - attach_workspace:
+        at: /home/circleci/project/
+    - <<: *restore_cache
+    - <<: *install_node_modules
+    - run:
+        name: install netlify cli
+        command: sudo npm install netlify-cli -g
+    - run: 
+        name: deploy site to netlify
+        command: netlify deploy --dir=/home/circleci/project/public -p
