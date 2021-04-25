@@ -3,7 +3,7 @@ executors:
     parameters:
       image:
         type: string
-        default: "10"
+        default: "12"
     docker:
     - image: circleci/node:<< parameters.image >>
     
@@ -25,7 +25,7 @@ aliases:
       key: v{{ .Environment.versionCache }}-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}-{{ checksum ".circleci/config.yml" }}
       paths:
       - ./node_modules/
-      
+
 version: 2.1
 
 
