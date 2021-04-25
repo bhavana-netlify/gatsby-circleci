@@ -60,7 +60,7 @@ jobs:
     - <<: *install_node_modules
     - run:
         name: install netlify cli
-        command: sudo npm install netlify-cli -g
+        command: npm install --unsafe-perm=true -g netlify-cli
     - run: 
         name: deploy site to netlify
         command: netlify deploy --dir=/home/circleci/project/public -p
