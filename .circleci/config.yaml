@@ -1,4 +1,4 @@
-executors:
+netlexecutors:
   node:
     parameters:
       image:
