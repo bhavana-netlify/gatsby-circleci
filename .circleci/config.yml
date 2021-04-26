@@ -66,15 +66,18 @@ jobs:
         command: netlify deploy --dir=/home/circleci/project/public -p
 
 
+
+
+
 workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - install_dependencies
-      - build:
+      - install
+      - build_and_lint:
           requires:
-            - install_dependencies
+            - install
       - deploy:
           context: GATSBY-CIRCLECI
           requires:
-            - build
+            - build_and_lint
