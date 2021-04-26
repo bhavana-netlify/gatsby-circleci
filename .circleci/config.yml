@@ -54,7 +54,9 @@ jobs:
     executor: node
     environment:  
       NETLIFY_SITE_ID: 4e12c884-1107-4456-bd42-fb42bdbf2f8d
-      NETLIFY_ACCESS_TOKEN: -i-Yial4dkIh14G6wS3KJ7wYueThIRdPWbI5r_mfA28
+      NETLIFY_ACCESS_TOKEN: ym3hYrosDbadqeHAFzLKQTOQEHNEhG6foN4yUXvQGlE
+
+
     steps:
     - checkout
     - attach_workspace:
