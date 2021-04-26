@@ -67,7 +67,7 @@ jobs:
     - run: 
         name: deploy site to netlify
         # command: netlify deploy --dir=/home/circleci/project/public -p
-        command: ./node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --prod --dir=public
+        command: deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --prod --dir=public
 
 
 workflows:
