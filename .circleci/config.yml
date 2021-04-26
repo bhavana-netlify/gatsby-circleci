@@ -73,11 +73,13 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - install
+      - install_dependencies
       - build_and_lint:
           requires:
-            - install
+            - install_dependencies
       - deploy:
           context: GATSBY-CIRCLECI
           requires:
             - build_and_lint
+
+
